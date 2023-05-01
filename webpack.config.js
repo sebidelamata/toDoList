@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        title: '2Du',
+        title: '2Dü',
     }),
   ],
   output: {

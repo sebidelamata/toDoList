@@ -3,9 +3,43 @@ body{
     width: 100vw;
     margin: 0px;
     padding: 0px;
+    background-color: #121212;
+    color: rgba(255, 255, 255, 0.87);
+    grid-template-areas: "header header"
+    "sidebar body"
+    "footer footer";
+    grid-template: 1fr 7fr / 1fr 8fr 1fr;
 }
 
 #header{
     height: 15vh;
     display: grid;
+    font-size: 750%;
+    font-weight: 900;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    grid-area: header;
+
+}
+
+#header-title-div{
+    display: grid;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+#footer{
+    height: 8vh;
+    display: grid;
+    grid-area: footer;
+}
+
+#sidebar{
+    grid-area: footer;
+}
+
+#body{
+    grid-area: body;
 }
