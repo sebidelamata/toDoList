@@ -9,6 +9,7 @@ body{
     "sidebar body"
     "footer footer";
     grid-template: 1fr 7fr / 1fr 8fr 1fr;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 #header{
@@ -20,6 +21,7 @@ body{
     align-items: center;
     justify-content: center;
     grid-area: header;
+    min-width: 100vw;
 
 }
 

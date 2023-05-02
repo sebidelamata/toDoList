@@ -1,4 +1,5 @@
 import './style.css';
+import { Task } from './task.js';
 
 let docBody = document.querySelector('body');
 
@@ -28,3 +29,7 @@ docBody.appendChild(headerDiv);
 docBody.appendChild(sidebar);
 docBody.appendChild(bodyDiv);
 docBody.appendChild(footerDiv);
+
+const test = Task('mow lawn', 'mow the lawn on saturday', '2023-05-03', 'low');
+
+console.log(test.getDescription());
