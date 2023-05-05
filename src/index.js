@@ -1,5 +1,5 @@
 import './style.css';
-import { Task } from './task.js';
+import { Project } from './project';
 
 let docBody = document.querySelector('body');
 
@@ -30,6 +30,7 @@ docBody.appendChild(sidebar);
 docBody.appendChild(bodyDiv);
 docBody.appendChild(footerDiv);
 
-const test = Task('mow lawn', 'mow the lawn on saturday', '2023-05-03', 'low');
-
-console.log(test.getDescription());
+let test = Project();
+test.appendProjectTasks('mow lawn', 'mow the lawn on saturday', '2023-05-03', 'low');
+let testReturn = test.getProjectTasks()[0];
+console.log(testReturn.getDescription());
