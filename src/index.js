@@ -31,6 +31,6 @@ docBody.appendChild(bodyDiv);
 docBody.appendChild(footerDiv);
 
 let test = Project();
-test.appendProjectTasks('mow lawn', 'mow the lawn on saturday', '2023-05-03', 'low');
+test.appendProjectTasks('mow lawn', 'mow the lawn on saturday', '2023-05-03', 'Low');
 let testReturn = test.getProjectTasks()[0];
 console.log(testReturn.getDescription());

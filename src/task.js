@@ -1,7 +1,7 @@
 const Task = (_name, _description, _date, _priority) => {
     
     // requirements
-    if(_priority !== 'High' || _priority !== 'Medium' || _priority !== 'Low'){
+    if(_priority !== 'High' && _priority !== 'Medium' && _priority !== 'Low'){
         console.error('Priority must be High, Low, or Medium');
     }
 
