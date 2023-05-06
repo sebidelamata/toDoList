@@ -11,35 +11,35 @@ const Task = (_name, _description, _date, _priority) => {
     let priority = _priority;
     let complete = false;
 
-    const getName = () => {
+    const getTaskName = () => {
         return name;
     };
 
-    const editName = (_newName) => {
+    const editTaskName = (_newName) => {
         name = _newName;
     };
 
-    const getDescription = () => {
+    const getTaskDescription = () => {
         return description;
     };
 
-    const editDescription = (_newDescriptionString) => {
+    const editTaskDescription = (_newDescriptionString) => {
         description = _newDescriptionString;
     };
 
-    const getDate = () => {
+    const getTaskDate = () => {
         return date;
     };
 
-    const editDate = (_newDate) => {
+    const editTaskDate = (_newDate) => {
         date = _newDate;
     };
 
-    const getPriority = () => {
+    const getTaskPriority = () => {
         return priority;
     };
 
-    const editPriority = (_newPriority) => {
+    const editTaskPriority = (_newPriority) => {
         if(_newPriority !== 'High' || _newPriority !== 'Medium' || _newPriority !== 'Low'){
             console.error('Priority must be High, Low, or Medium');
         }
@@ -59,16 +59,16 @@ const Task = (_name, _description, _date, _priority) => {
     };
 
     return { 
-        getName, 
-        getDescription, 
-        getDate, 
-        getPriority, 
+        getTaskName, 
+        getTaskDescription, 
+        getTaskDate, 
+        getTaskPriority, 
         getTaskComplete, 
         setTaskComplete, 
-        editDescription,
-        editDate,
-        editName,
-        editPriority,
+        editTaskDescription,
+        editTaskDate,
+        editTaskName,
+        editTaskPriority,
     };
 };
 

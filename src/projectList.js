@@ -8,12 +8,13 @@ const ProjectListManager = (() => {
         return projectList;
     };
 
-    const appendProjectList = (_projectName) => {
-        projectList[_projectName] = Project();
+    const appendProjectList = (_name, _description, _date, _priority) => {
+        let _project = Project(_name, _description, _date, _priority);
+        projectList.push(_project);
     };
 
-    const removeProjectFromProjectList = (_taskName) => {
-        _projectIndex = projectList.find(_taskName);
+    const removeProjectFromProjectList = (_projectName) => {
+        let _projectIndex = projectList.findIndex(i => i.getProjectName() === _projectName);
         projectList.splice(_projectIndex, 1);
     };
 

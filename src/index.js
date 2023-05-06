@@ -32,5 +32,15 @@ docBody.appendChild(footerDiv);
 
 //sidebar stuff
 
+ProjectListManager.appendProjectList('Renovate House', 'renovate house', '5/7/2023', 'Low');
 
-let test = ProjectListManager();
+
+ProjectListManager.appendProjectList('Move to NY', 'move to new york', '8/5/2023', 'High');
+
+
+ProjectListManager.removeProjectFromProjectList('Renovate House');
+
+console.log(ProjectListManager.getProjectList()[0].getProjectName());
+
+
+let test = ProjectListManager.getProjectList()[0]
