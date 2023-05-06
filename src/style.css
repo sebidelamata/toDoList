@@ -10,12 +10,12 @@
 }
 
 :root{
-    --clr-1: rgb(11, 11, 11);
+    --clr-1: rgb(21, 20, 20);
     --clr-2: rgb(24, 18, 41);
     --clr-3: rgb(28, 178, 166);
     --clr-4: rgb(113, 29, 143);
-    --clr-5: rgb(71, 81, 231);
-    --clr-6: rgba(255, 255, 255, 0.87);
+    --clr-5: rgb(101, 65, 247);
+    --clr-6: rgba(255, 255, 255, 0.773);
 }
 
 body{
@@ -66,7 +66,11 @@ body{
 }
 
 #body{
+    display: grid;
+    justify-content: center;
+    align-items: center;
     grid-area: body;
+    width: 85vw;
 }
 
 #sidebar-icon-div{
@@ -104,7 +108,7 @@ body{
 .button-outline::after{
     content: "";
     position: absolute;
-    inset: -0.1rem;
+    inset: -0.075rem;
     background: conic-gradient(
         from var(--gradient-angle),
         var(--clr-3),
@@ -114,9 +118,27 @@ body{
         var(--clr-3)
     );
     border-radius: inherit;
-    animation: rotation 20s linear infinite;
+    animation: rotation 15s linear infinite;
     z-index: -1;
 }
 .button-outline::after{
-    filter: blur(3.5rem);
+    filter: blur(2.0rem);
+}
+
+#projects-container{
+    display: grid;
+    width: 70vw;
+    height: 65vh;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+}
+
+#projects-container-title{
+    display: grid;
+    font-weight: bolder;
+    font-size: x-large;
+    align-items: center;
+    justify-content: center;
 }
