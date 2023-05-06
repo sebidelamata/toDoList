@@ -8,7 +8,7 @@ body{
     grid-template-areas: "header header"
     "sidebar body"
     "footer footer";
-    grid-template: 1fr 7fr / 1fr 8fr 1fr;
+    /* grid-template: 1fr 8fr 1fr / 1fr 7fr; */
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
@@ -21,7 +21,7 @@ body{
     align-items: center;
     justify-content: center;
     grid-area: header;
-    min-width: 100vw;
+    /* min-width: 100vw; */
 
 }
 
@@ -39,7 +39,8 @@ body{
 }
 
 #sidebar{
-    grid-area: footer;
+    background-color: red;
+    grid-area: sidebar;
 }
 
 #body{

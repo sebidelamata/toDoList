@@ -1,5 +1,5 @@
 import './style.css';
-import { Project } from './project';
+import { ProjectListManager } from './projectList.js';
 
 let docBody = document.querySelector('body');
 
@@ -30,7 +30,7 @@ docBody.appendChild(sidebar);
 docBody.appendChild(bodyDiv);
 docBody.appendChild(footerDiv);
 
-let test = Project();
-test.appendProjectTasks('mow lawn', 'mow the lawn on saturday', '2023-05-03', 'Low');
-let testReturn = test.getProjectTasks()[0];
-console.log(testReturn.getDescription());
+//sidebar stuff
+
+
+let test = ProjectListManager();
