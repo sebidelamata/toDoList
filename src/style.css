@@ -1,14 +1,34 @@
+@property --gradient-angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotation {
+    0% { --gradient-angle: 0deg; }
+    100% { --gradient-angle: 360deg; }
+}
+
+:root{
+    --clr-1: rgb(11, 11, 11);
+    --clr-2: rgb(24, 18, 41);
+    --clr-3: rgb(28, 178, 166);
+    --clr-4: rgb(113, 29, 143);
+    --clr-5: rgb(71, 81, 231);
+    --clr-6: rgba(255, 255, 255, 0.87);
+}
+
 body{
     display: grid;
     width: 100vw;
     margin: 0px;
     padding: 0px;
-    background-color: #121212;
-    color: rgba(255, 255, 255, 0.87);
+    background-color: var(--clr-1);
+    color: var(--clr-6);
     grid-template-areas: "header header"
     "sidebar body"
     "footer footer";
-    /* grid-template: 1fr 8fr 1fr / 1fr 7fr; */
+    /* grid-template: auto 1fr / 1fr 5fr; */
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
@@ -39,10 +59,64 @@ body{
 }
 
 #sidebar{
-    background-color: red;
+    display: grid;
+    width: 15vw;
+    height: 100vh;
     grid-area: sidebar;
 }
 
 #body{
     grid-area: body;
+}
+
+#sidebar-icon-div{
+    display: grid;
+    height: 15vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 15vw; */
+}
+
+#sidebar-icon-sub-div{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+#sidebar-icon-sub-sub-div{
+    background-color: var(--clr-1);
+    font-size: xx-large;
+    font-weight: bold;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.button-outline{
+    background-color: var(--clr-1);
+    position: relative;
+    border-radius: 15%;
+}
+.button-outline::before,
+.button-outline::after{
+    content: "";
+    position: absolute;
+    inset: -0.1rem;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-3),
+        var(--clr-4),
+        var(--clr-5),
+        var(--clr-4),
+        var(--clr-3)
+    );
+    border-radius: inherit;
+    animation: rotation 20s linear infinite;
+    z-index: -1;
+}
+.button-outline::after{
+    filter: blur(3.5rem);
 }

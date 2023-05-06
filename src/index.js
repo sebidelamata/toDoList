@@ -31,16 +31,25 @@ docBody.appendChild(bodyDiv);
 docBody.appendChild(footerDiv);
 
 //sidebar stuff
+let sidebarIconDiv = document.createElement('div');
+sidebarIconDiv.id = 'sidebar-icon-div';
+sidebar.appendChild(sidebarIconDiv);
+let sidebarIconSubDiv1 = document.createElement('div');
+let sidebarIconSubDiv2 = document.createElement('div');
+sidebarIconSubDiv2.id = 'sidebar-icon-sub-div';
+let sidebarIconSubDiv3 = document.createElement('div');
+sidebarIconDiv.appendChild(sidebarIconSubDiv1);
+sidebarIconDiv.appendChild(sidebarIconSubDiv2);
+sidebarIconDiv.appendChild(sidebarIconSubDiv3);
+let sidebarIconSubSubDiv1 = document.createElement('div');
+let sidebarIconSubSubDiv2 = document.createElement('div');
+sidebarIconSubSubDiv2.id = 'sidebar-icon-sub-sub-div';
+sidebarIconSubSubDiv2.classList.add('button-outline');
+sidebarIconSubSubDiv2.textContent = '+';
+let sidebarIconSubSubDiv3 = document.createElement('div');
+sidebarIconSubDiv2.appendChild(sidebarIconSubSubDiv1);
+sidebarIconSubDiv2.appendChild(sidebarIconSubSubDiv2);
+sidebarIconSubDiv2.appendChild(sidebarIconSubSubDiv3);
 
-ProjectListManager.appendProjectList('Renovate House', 'renovate house', '5/7/2023', 'Low');
 
 
-ProjectListManager.appendProjectList('Move to NY', 'move to new york', '8/5/2023', 'High');
-
-
-ProjectListManager.removeProjectFromProjectList('Renovate House');
-
-console.log(ProjectListManager.getProjectList()[0].getProjectName());
-
-
-let test = ProjectListManager.getProjectList()[0]
