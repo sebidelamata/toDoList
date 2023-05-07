@@ -151,7 +151,7 @@ body{
     min-width: 80%;
     align-items: center;
     justify-content: center;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
     padding: 1vw;
 }
@@ -177,9 +177,15 @@ body{
     padding: 0.7vw;
 }
 
-.sidebar-links{
+#add-project-button,
+#general-tasks-section,
+#sidebar-icon-sub-sub-div{
     transition: font-size ease 500ms;
 }
-.sidebar-links:hover{
-    font-size: 104%;
+#add-project-button:hover,
+#general-tasks-section:hover{
+    font-size: 110%;
+}
+#sidebar-icon-sub-sub-div:hover{
+    font-size: 225%;
 }
