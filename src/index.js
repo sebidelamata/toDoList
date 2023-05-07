@@ -51,6 +51,29 @@ sidebarIconSubDiv2.appendChild(sidebarIconSubSubDiv1);
 sidebarIconSubDiv2.appendChild(sidebarIconSubSubDiv2);
 sidebarIconSubDiv2.appendChild(sidebarIconSubSubDiv3);
 
+let generalTasksSection = document.createElement('div');
+generalTasksSection.id = 'general-tasks-section';
+generalTasksSection.classList.add('button-outline');
+generalTasksSection.textContent = 'General Tasks';
+sidebar.appendChild(generalTasksSection);
+
+let projectsSection = document.createElement('div');
+projectsSection.id = 'sidebar-projects-section';
+projectsSection.classList.add('button-outline');
+sidebar.appendChild(projectsSection);
+let projectsSectionTitle = document.createElement('div');
+projectsSectionTitle.id = 'sidebar-projects-section-title';
+projectsSectionTitle.textContent = 'Projects';
+projectsSection.appendChild(projectsSectionTitle);
+let listedProjects = document.createElement('div');
+listedProjects.id = 'listed-projects';
+projectsSection.appendChild(listedProjects);
+let addProjectButton = document.createElement('div');
+addProjectButton.id = 'add-project-button';
+addProjectButton.classList.add('sidebar-links');
+addProjectButton.textContent = 'Add Project +';
+projectsSection.appendChild(addProjectButton);
+
 
 // task list
 let projectsContainer = document.createElement('div');
@@ -59,7 +82,7 @@ projectsContainer.classList.add('button-outline');
 bodyDiv.appendChild(projectsContainer);
 let projectsContainerTitle = document.createElement('div');
 projectsContainerTitle.id = 'projects-container-title';
-projectsContainerTitle.textContent = 'Projects';
+projectsContainerTitle.textContent = 'General Tasks';
 projectsContainer.appendChild(projectsContainerTitle);
 let projectsContainerBody = document.createElement('div');
 projectsContainerBody.id = 'projects-container-body';
