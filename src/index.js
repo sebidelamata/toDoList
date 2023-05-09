@@ -1,5 +1,5 @@
 import './style.css';
-import { GeneralTask } from './generalTasks';
+import { SidebarMenuManager } from './sideBarMenuManager.js';
 
 let docBody = document.querySelector('body');
 
@@ -75,4 +75,4 @@ addProjectButton.textContent = 'Add Project +';
 projectsSection.appendChild(addProjectButton);
 
 
-GeneralTask();
+SidebarMenuManager();

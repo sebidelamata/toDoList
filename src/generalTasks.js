@@ -4,6 +4,10 @@ const GeneralTask = () => {
 
 let bodyDiv = document.querySelector('#body'); 
 
+if(bodyDiv.childNodes.length > 0){
+    bodyDiv.removeChild(bodyDiv.firstElementChild);
+}
+
     // task list
 let projectsContainer = document.createElement('div');
 projectsContainer.id = 'projects-container';
