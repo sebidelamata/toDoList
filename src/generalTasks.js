@@ -1,4 +1,5 @@
 import { ProjectListManager } from './projectList.js';
+import { AddTaskButtonManager } from './addTaskButtonManager.js';
 
 const GeneralTask = () => {
 
@@ -23,7 +24,9 @@ projectsContainer.appendChild(projectsContainerBody);
 
 let _projectList = ProjectListManager.getProjectList();
 
-console.log(_projectList);
+console.log(_projectList[0].getProjectName());
+
+AddTaskButtonManager();
 
 }; 
 
