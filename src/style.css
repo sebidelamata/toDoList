@@ -196,12 +196,12 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 80%;
+    opacity: 85%;
     background-color: var(--clr-1);
 }
 
 #add-task-container{
-    position: fixed;
+    position: absolute;
     top: 15%;
     left: 15%;
     width: 70%;
