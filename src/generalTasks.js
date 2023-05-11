@@ -26,7 +26,7 @@ let _projectList = ProjectListManager.getProjectList();
 
 console.log(_projectList[0].getProjectName());
 
-AddTaskButtonManager();
+AddTaskButtonManager('General Tasks');
 
 }; 
 
