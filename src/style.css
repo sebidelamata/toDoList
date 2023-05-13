@@ -250,7 +250,7 @@ body{
 
 #add-task-body{
     display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr;
     align-items: center;
     justify-content:center;
     gap: 5vh;
@@ -260,4 +260,79 @@ body{
     display: grid;
     align-items: center;
     justify-content: center;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 125%;
+}
+
+input,
+button,
+#task-priority-select{
+    color-scheme: dark;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-2),
+        var(--clr-2),
+        var(--clr-4),
+        var(--clr-4),
+        var(--clr-5),
+        var(--clr-1),
+        var(--clr-5),
+        var(--clr-4),
+        var(--clr-4),
+        var(--clr-2),
+        var(--clr-2)
+    );
+    position: relative;
+    border-radius: 2vw;
+    animation: rotation 15s linear infinite;
+    filter: blur(0.04rem);
+    color: var(--clr-6);
+    font-weight: bold;
+    padding: 2vw;
+    font-size: minmax(50%, x-large);
+    margin: 0.5vw;
+    overflow: auto;
+}
+button{
+    font-size: x-large;
+    transition: 0.5s;
+}
+button:hover{
+    background-image: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-6),
+        var(--clr-6),
+        var(--clr-3),
+        var(--clr-6),
+        var(--clr-5),
+        var(--clr-6),
+        var(--clr-6),
+        var(--clr-5),
+        var(--clr-6),
+        var(--clr-3),
+        var(--clr-6),
+        var(--clr-6)
+    );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-size: xx-large;
+}
+
+#submit-div{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+label{
+    font-size: x-large;
+    font-weight: bold;
 }

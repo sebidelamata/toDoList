@@ -21,7 +21,7 @@ const addTasksPopup = () => {
     addTaskTitle.id = 'add-task-title';
     addTaskTitle.textContent = `Add Task to ${_projectName}`;
     addTaskContainer.appendChild(addTaskTitle);
-    let addTaskBody = document.createElement('div');
+    let addTaskBody = document.createElement('form');
     addTaskBody.id = 'add-task-body';
     addTaskContainer.appendChild(addTaskBody);
     let taskContainerName = document.createElement('div');
@@ -59,10 +59,14 @@ const addTasksPopup = () => {
     let taskContainerDateInput = document.createElement('input');
     taskContainerDateInput.setAttribute('name', 'date');
     taskContainerDateInput.setAttribute('required', 'required');
-    taskContainerDateInput.type = 'text';
+    taskContainerDateInput.type = 'date';
     taskContainerDate.appendChild(taskContainerDateInput);
     taskContainerDate.id = 'task-container-date';
     addTaskBody.appendChild(taskContainerDate); 
+
+    //Create array of options to be added
+    var priorityChoices = ["High", "Medium", "Low"];
+
     let taskContainerPriority = document.createElement('div');
     taskContainerPriority.id = 'task-container-priority';
     taskContainerPriority.classList.add('add-task-inputs');
@@ -70,12 +74,56 @@ const addTasksPopup = () => {
     taskContainerPriorityLabel.setAttribute('for', 'priority');
     taskContainerPriorityLabel.textContent = 'Priority';
     taskContainerPriority.appendChild(taskContainerPriorityLabel);
-    let taskContainerPriorityInput = document.createElement('input');
+    let taskContainerPriorityInput = document.createElement('select');
+    taskContainerPriorityInput.id = 'task-priority-select';
     taskContainerPriorityInput.setAttribute('name', 'priority');
     taskContainerPriorityInput.setAttribute('required', 'required');
-    taskContainerPriorityInput.type = 'text';
+    //Create and append the options
+    for (var i = 0; i < priorityChoices.length; i++) {
+        var option = document.createElement("option");
+        option.value = priorityChoices[i];
+        option.text = priorityChoices[i];
+        taskContainerPriorityInput.appendChild(option);
+}
     taskContainerPriority.appendChild(taskContainerPriorityInput);
     addTaskBody.appendChild(taskContainerPriority);
+
+
+    let submitDiv = document.createElement('div');
+    submitDiv.id = 'submit-div';
+    addTaskBody.appendChild(submitDiv);
+    let submitButton = document.createElement('button');
+    submitDiv.appendChild(submitButton);
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Add';
+    submitButton.id = 'submit-button';
+    let cancelDiv = document.createElement('div');
+    cancelDiv.id = 'cancel-div';
+    addTaskBody.appendChild(cancelDiv);
+    let cancelButton = document.createElement('button');
+    cancelDiv.appendChild(cancelButton);
+    cancelButton.textContent = 'Cancel';
+    cancelButton.id = 'cancel-button';
+
+
+    const addTask = (e) => {
+        e.preventDefault();
+        console.log('hi');
+    }
+
+    const cancelTask = (e) => {
+        e.preventDefault();
+        console.log(e.target.parentNode.parentNode.parentNode.parentNode.remove());
+    }
+
+    let docForm = document.querySelector('form');
+
+    docForm.addEventListener('submit', addTask);
+
+    let cancelSelect = document.querySelector('#cancel-button');
+
+    cancelSelect.addEventListener('click', cancelTask);
+
 
     let selectedProject = ProjectListManager.getProjectList().filter(_project => {
         return _project.getProjectName() === _projectName;
