@@ -5,6 +5,12 @@ const AddTaskButtonManager = (_projectName) => {
 
 let addTasksButton = document.querySelector('#sidebar-icon-sub-sub-div'); 
 
+let selectedProject = ProjectListManager.getProjectList().filter(_project => {
+    return _project.getProjectName() === _projectName;
+});
+
+selectedProject = selectedProject[0];
+
 const addTasksPopup = () => {
     
     let bodyDiv = document.querySelector('body');
@@ -12,6 +18,7 @@ const addTasksPopup = () => {
     let greyout = document.createElement('div');
     greyout.id = 'add-task-greyout';
     bodyDiv.appendChild(greyout);
+
     
     let addTaskContainer = document.createElement('div');
     addTaskContainer.id = 'add-task-container';
@@ -104,16 +111,33 @@ const addTasksPopup = () => {
     cancelDiv.appendChild(cancelButton);
     cancelButton.textContent = 'Cancel';
     cancelButton.id = 'cancel-button';
+    cancelButton.formNoValidate = true;
 
 
     const addTask = (e) => {
         e.preventDefault();
-        console.log('hi');
+
+        let selectedForm = document.querySelector('form');
+        let nameInput = selectedForm.name.value;
+        let descriptionInput = selectedForm.description.value;
+        let dateInput = selectedForm.date.value;
+        let priorityInput = selectedForm.priority.value;
+        
+        selectedProject.appendProjectTasks(
+            nameInput,
+            descriptionInput,
+            dateInput,
+            priorityInput,
+        );
+
+        e.target.parentNode.parentNode.remove();
+
+        console.log(selectedProject.getProjectTasks());
     }
 
     const cancelTask = (e) => {
         e.preventDefault();
-        console.log(e.target.parentNode.parentNode.parentNode.parentNode.remove());
+        e.target.parentNode.parentNode.parentNode.parentNode.remove();
     }
 
     let docForm = document.querySelector('form');
@@ -123,17 +147,6 @@ const addTasksPopup = () => {
     let cancelSelect = document.querySelector('#cancel-button');
 
     cancelSelect.addEventListener('click', cancelTask);
-
-
-    let selectedProject = ProjectListManager.getProjectList().filter(_project => {
-        return _project.getProjectName() === _projectName;
-    });
-
-    selectedProject = selectedProject[0];
-
-    console.log(selectedProject.getProjectName());
-
-
 
 };
 
