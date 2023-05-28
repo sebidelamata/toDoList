@@ -22,8 +22,42 @@ projectsContainerBody.id = 'projects-container-body';
 projectsContainer.appendChild(projectsContainerBody);
 
 let taskArray = ProjectListManager.getProjectList()[0].getProjectTasks();
-for(let i=0; i<taskArray.length; i ++){
-    console.log(taskArray[i].getTaskName())
+for(let i=0; i<taskArray.length; i++){
+    let taskRow = document.createElement('div');
+    projectsContainerBody.appendChild(taskRow);
+    taskRow.id = `task-row-${i}`;
+    taskRow.classList.add('task-row');
+    let taskName = document.createElement('div');
+    taskRow.appendChild(taskName);
+    taskName.id = `task-name-${i}`;
+    taskName.classList.add('task-name'); 
+    taskName.textContent = taskArray[i].getTaskName();
+    let taskDescription = document.createElement('div');
+    taskRow.appendChild(taskDescription);
+    taskDescription.id = `task-description-${i}`;
+    taskDescription.classList.add('task-description'); 
+    taskDescription.textContent = taskArray[i].getTaskDescription();
+    let taskDate = document.createElement('div');
+    taskRow.appendChild(taskDate);
+    taskDate.id = `task-date-${i}`;
+    taskDate.classList.add('task-date'); 
+    taskDate.textContent = taskArray[i].getTaskDate();
+    let taskPriority = document.createElement('div');
+    taskRow.appendChild(taskPriority);
+    taskPriority.id = `task-priority-${i}`;
+    taskPriority.classList.add('task-priority'); 
+    taskPriority.textContent = taskArray[i].getTaskPriority();
+    let taskEdit = document.createElement('div');
+    taskRow.appendChild(taskEdit);
+    taskEdit.id = `task-edit-${i}`;
+    taskEdit.classList.add('task-edit');
+    taskEdit.innerHTML = ' <i class="fas fa-edit"></i>';
+    let taskDelete = document.createElement('div');
+    taskRow.appendChild(taskDelete);
+    taskDelete.id = `task-delete-${i}`;
+    taskDelete.classList.add('task-delete'); 
+    taskDelete.innerHTML = ' <i class="fas fa-trash"></i>';
+
 }
 
 //console.log(_projectList)
