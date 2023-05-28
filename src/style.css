@@ -341,4 +341,67 @@ label{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    vertical-align: top;
+}
+
+.task-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    padding: 12px;
+    border-radius: 48px;
+    transition: 13s;
+}
+
+.task-row:hover{
+    background-color: var(--clr-5);
+}
+
+.task-name{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bolder;
+}
+.task-description{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.task-date{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+.task-priority{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bolder;
+}
+.task-edit{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bolder;
+    transition: 1s;
+}
+.task-edit:hover{
+    font-size: xx-large;
+}
+.task-delete{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bolder;
+    transition: 1s;
+}
+.task-delete:hover{
+    font-size: xx-large;
 }
