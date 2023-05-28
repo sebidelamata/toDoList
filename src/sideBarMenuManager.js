@@ -6,8 +6,6 @@ const SidebarMenuManager = () => {
 
 let bodyDiv = document.querySelector('#body'); 
 
-console.log(ProjectListManager.getProjectList())
-
 if(ProjectListManager.getProjectList()[0] === undefined || ProjectListManager.getProjectList()[0].getProjectName() !== 'General Tasks'){
     // create initial project (if it doesnt already exist)
     ProjectListManager.appendProjectList(
@@ -27,7 +25,6 @@ const setProjectName = (_projectName) => {
 };
 
 let addTasksButton = document.querySelector('#sidebar-icon-sub-sub-div'); 
-console.log(addTasksButton)
 
 let selectedProjectIndex = ProjectListManager.getProjectList().findIndex(_project => {
     return _project.getProjectName() === projectName;
@@ -157,10 +154,7 @@ const addTasksPopup = () => {
         );
         // remove add task modal
         greyout.remove();
-
-        console.log(ProjectListManager.getProjectList()[0].getProjectTasks())
-        console.log(ProjectListManager.getProjectList().length)
-
+        GeneralTask();
 
     }
 
@@ -168,6 +162,7 @@ const addTasksPopup = () => {
         e.preventDefault();
         // remove add task modal
         greyout.remove();
+        GeneralTask();
     }
 
     let docForm = document.querySelector('form');

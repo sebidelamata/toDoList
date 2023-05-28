@@ -4,7 +4,7 @@ const GeneralTask = () => {
 
 let bodyDiv = document.querySelector('#body'); 
 
-if(bodyDiv.childNodes.length > 0){
+if(bodyDiv.childNodes.length !== undefined && bodyDiv.childNodes.length > 0){
     bodyDiv.removeChild(bodyDiv.firstElementChild);
 }
 
@@ -21,8 +21,10 @@ let projectsContainerBody = document.createElement('div');
 projectsContainerBody.id = 'projects-container-body';
 projectsContainer.appendChild(projectsContainerBody);
 
-let _projectList = ProjectListManager.getProjectList();
-// for(let i=0; i<_projectList)
+let taskArray = ProjectListManager.getProjectList()[0].getProjectTasks();
+for(let i=0; i<taskArray.length; i ++){
+    console.log(taskArray[i].getTaskName())
+}
 
 //console.log(_projectList)
 
