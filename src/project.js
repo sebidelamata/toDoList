@@ -68,6 +68,10 @@ const Project = (_name, _description, _date, _priority) => {
         projectTasks.push(taskObject);
     };
 
+    const deleteProjectTask = (_index) => {
+        projectTasks.splice(_index, 1);
+    };
+
     return {
         getProjectName,
         editProjectName,
@@ -81,6 +85,7 @@ const Project = (_name, _description, _date, _priority) => {
         setTaskComplete,
         getProjectTasks, 
         appendProjectTasks,
+        deleteProjectTask,
      };
 };
 

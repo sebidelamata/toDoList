@@ -18,6 +18,10 @@
     --clr-6: rgba(255, 255, 255, 0.773);
 }
 
+svg {
+    pointer-events: none;
+}
+
 body{
     display: grid;
     width: 100vw;

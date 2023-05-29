@@ -62,6 +62,23 @@ for(let i=0; i<taskArray.length; i++){
 
 //console.log(_projectList)
 
+// listen on the project tasks window and delete tasks
+let deleteTaskButtons = document.querySelectorAll('.task-delete');
+
+const deleteTaskFromProject = (e) => {
+    
+    let taskId = e.target.id.substring(12);
+    
+    ProjectListManager.getProjectList()[0].deleteProjectTask(taskId);
+
+    GeneralTask();
+
+};
+
+deleteTaskButtons.forEach(function(deleteTaskButton){
+    deleteTaskButton.addEventListener('click', deleteTaskFromProject);
+})
+
 }; 
 
 export { GeneralTask };

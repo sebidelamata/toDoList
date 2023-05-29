@@ -181,6 +181,7 @@ let generalTasksButton = document.querySelector('#general-tasks-section');
 
 generalTasksButton.addEventListener('click', GeneralTask);
 
+
 return {
     setProjectName,
 }
