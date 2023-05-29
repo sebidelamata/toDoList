@@ -354,7 +354,7 @@ label{
     grid-template-rows: auto;
     padding: 12px;
     border-radius: 48px;
-    transition: 13s;
+    transition: 5s;
 }
 
 .task-row:hover{
@@ -408,4 +408,19 @@ label{
 }
 .task-delete:hover{
     font-size: xx-large;
+}
+
+.project-row{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 4px;
+    border-radius: 12px;
+    transition: 5s;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.project-row:hover{
+    background-color: var(--clr-5);
 }
