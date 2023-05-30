@@ -2,6 +2,10 @@ import { ProjectListManager } from './projectList.js';
 
 const GeneralTask = () => {
 
+let selectedProjectIndex = ProjectListManager.getSelectedProject();
+let selectedProjectName = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectName();
+
+
 let bodyDiv = document.querySelector('#body'); 
 
 if(bodyDiv.childNodes.length !== undefined && bodyDiv.childNodes.length > 0){
@@ -15,21 +19,21 @@ projectsContainer.classList.add('button-outline');
 bodyDiv.appendChild(projectsContainer);
 let projectsContainerTitle = document.createElement('div');
 projectsContainerTitle.id = 'projects-container-title';
-projectsContainerTitle.textContent = ProjectListManager.getProjectList()[0].getProjectName();
+projectsContainerTitle.textContent = selectedProjectName;
 projectsContainer.appendChild(projectsContainerTitle);
 let projectDetails = document.createElement('div');
 projectDetails.id = 'project-details';
-projectDetails.textContent = ProjectListManager.getProjectList()[0].getProjectDate() !== null ? `${ProjectListManager.getProjectList()[0].getProjectDescription()}` : `${ProjectListManager.getProjectList()[0].getProjectDescription()}`;
+projectDetails.textContent = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectDate() !== null ? `${ProjectListManager.getProjectList()[selectedProjectIndex].getProjectDescription()}` : `${ProjectListManager.getProjectList()[selectedProjectIndex].getProjectDescription()}`;
 projectsContainer.appendChild(projectDetails);
 let projectPriority = document.createElement('div');
 projectPriority.id = 'project-priority';
-projectPriority.textContent = ProjectListManager.getProjectList()[0].getProjectDate() !== null ? `A ${ProjectListManager.getProjectList()[0].getProjectPriority()} Priority Project Due on ${ProjectListManager.getProjectList()[0].getProjectDate()}` : `A ${ProjectListManager.getProjectList()[0].getProjectPriority()} Priority Project`;
+projectPriority.textContent = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectDate() !== null ? `A ${ProjectListManager.getProjectList()[selectedProjectIndex].getProjectPriority()} Priority Project Due on ${ProjectListManager.getProjectList()[selectedProjectIndex].getProjectDate()}` : `A ${ProjectListManager.getProjectList()[selectedProjectIndex].getProjectPriority()} Priority Project`;
 projectsContainer.appendChild(projectPriority);
 let projectsContainerBody = document.createElement('div');
 projectsContainerBody.id = 'projects-container-body';
 projectsContainer.appendChild(projectsContainerBody);
 
-let taskArray = ProjectListManager.getProjectList()[0].getProjectTasks();
+let taskArray = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks();
 for(let i=0; i<taskArray.length; i++){
     let taskRow = document.createElement('div');
     projectsContainerBody.appendChild(taskRow);
@@ -41,7 +45,7 @@ for(let i=0; i<taskArray.length; i++){
     taskName.classList.add('task-name'); 
     taskName.textContent = taskArray[i].getTaskName();
     // shading if complete
-    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+    if(ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[i].getTaskComplete() === true){
         taskName.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
     }
     let taskDescription = document.createElement('div');
@@ -50,7 +54,7 @@ for(let i=0; i<taskArray.length; i++){
     taskDescription.classList.add('task-description'); 
     taskDescription.textContent = taskArray[i].getTaskDescription();
     // shading if complete
-    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+    if(ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[i].getTaskComplete() === true){
         taskDescription.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
     }
     let taskDate = document.createElement('div');
@@ -59,7 +63,7 @@ for(let i=0; i<taskArray.length; i++){
     taskDate.classList.add('task-date'); 
     taskDate.textContent = taskArray[i].getTaskDate();
     // shading if complete
-    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+    if(ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[i].getTaskComplete() === true){
         taskDate.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
     }
     let taskPriority = document.createElement('div');
@@ -68,7 +72,7 @@ for(let i=0; i<taskArray.length; i++){
     taskPriority.classList.add('task-priority'); 
     taskPriority.textContent = taskArray[i].getTaskPriority();
     // shading if complete
-    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+    if(ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[i].getTaskComplete() === true){
         taskPriority.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
     }
     let taskEdit = document.createElement('div');
@@ -80,7 +84,7 @@ for(let i=0; i<taskArray.length; i++){
     taskRow.appendChild(taskComplete);
     taskComplete.id = `task-complete-${i}`;
     taskComplete.classList.add('task-complete');
-    taskComplete.innerHTML = ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === false ? '<i class="fa-regular fa-square"></i>' : '<i class="fa-regular fa-check-square"></i>';
+    taskComplete.innerHTML = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[i].getTaskComplete() === false ? '<i class="fa-regular fa-square"></i>' : '<i class="fa-regular fa-check-square"></i>';
     let taskDelete = document.createElement('div');
     taskRow.appendChild(taskDelete);
     taskDelete.id = `task-delete-${i}`;
@@ -89,21 +93,19 @@ for(let i=0; i<taskArray.length; i++){
 
 }
 
-//console.log(_projectList)
 // listen on the project tasks window and complete tasks
 let completeTaskButtons = document.querySelectorAll('.task-complete');
 
 const completeTaskFromProject = (e) => {
     
     let taskId = e.target.id.substring(14);
+    let selectedProjectIndex = ProjectListManager.getSelectedProject();
 
-    if(ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskComplete() === true){
-        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].setTaskComplete(false);
+    if(ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].getTaskComplete() === true){
+        ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].setTaskComplete(false);
     } else {
-        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].setTaskComplete(true);
+        ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].setTaskComplete(true);
     }
-
-    console.log(ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskComplete())
 
     GeneralTask();
 
@@ -119,8 +121,9 @@ let deleteTaskButtons = document.querySelectorAll('.task-delete');
 const deleteTaskFromProject = (e) => {
     
     let taskId = e.target.id.substring(12);
+    let selectedProjectIndex = ProjectListManager.getSelectedProject();
     
-    ProjectListManager.getProjectList()[0].deleteProjectTask(taskId);
+    ProjectListManager.getProjectList()[selectedProjectIndex].deleteProjectTask(taskId);
 
     GeneralTask();
 
@@ -137,12 +140,11 @@ let editTaskButtons = document.querySelectorAll('.task-edit');
 const editTaskFromProject = (e) => {
 
     let taskId = e.target.id.substring(10);
+    let selectedProjectIndex = ProjectListManager.getSelectedProject();
 
-    console.log(taskId)
-
-    let projectName = ProjectListManager.getProjectList()[0].getProjectName();
+    let projectName = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectName();
     
-    let taskName = ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskName();
+    let taskName = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].getTaskName();
 
     let bodyDiv = document.querySelector('body');
         
@@ -173,7 +175,7 @@ const editTaskFromProject = (e) => {
     editTaskContainerNameInput.setAttribute('name', 'name');
     editTaskContainerNameInput.setAttribute('required', 'required');
     editTaskContainerNameInput.type = 'text';
-    editTaskContainerNameInput.value = ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskName();
+    editTaskContainerNameInput.value = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].getTaskName();
     editTaskContainerName.appendChild(editTaskContainerNameInput);
     editTaskBody.appendChild(editTaskContainerName); 
     let editTaskContainerDescription = document.createElement('div');
@@ -186,7 +188,7 @@ const editTaskFromProject = (e) => {
     let editTaskContainerDescriptionInput = document.createElement('input');
     editTaskContainerDescriptionInput.setAttribute('name', 'description');
     editTaskContainerDescriptionInput.setAttribute('required', 'required');
-    editTaskContainerDescriptionInput.value = ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskDescription();
+    editTaskContainerDescriptionInput.value = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].getTaskDescription();
     editTaskContainerDescriptionInput.type = 'text';
     editTaskContainerDescription.appendChild(editTaskContainerDescriptionInput);
     editTaskBody.appendChild(editTaskContainerDescription); 
@@ -200,7 +202,7 @@ const editTaskFromProject = (e) => {
     editTaskContainerDateInput.setAttribute('name', 'date');
     editTaskContainerDateInput.setAttribute('required', 'required');
     editTaskContainerDateInput.type = 'date';
-    editTaskContainerDateInput.value = ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskDate();
+    editTaskContainerDateInput.value = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].getTaskDate();
     editTaskContainerDate.appendChild(editTaskContainerDateInput);
     editTaskContainerDate.id = 'add-task-container-date';
     editTaskBody.appendChild(editTaskContainerDate); 
@@ -227,7 +229,7 @@ const editTaskFromProject = (e) => {
         editTaskContainerPriorityInput.appendChild(option);
     }
     editTaskContainerPriority.appendChild(editTaskContainerPriorityInput);
-    editTaskContainerPriorityInput.value = ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskPriority();
+    editTaskContainerPriorityInput.value = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].getTaskPriority();
     editTaskBody.appendChild(editTaskContainerPriority);
     
     
@@ -250,6 +252,8 @@ const editTaskFromProject = (e) => {
     
     const editTask = (e) => {
     
+        let selectedProjectIndex = ProjectListManager.getSelectedProject();
+
         e.preventDefault();
         let selectedForm = document.querySelector('form');
         let nameInput = selectedForm.name.value;
@@ -258,10 +262,10 @@ const editTaskFromProject = (e) => {
         let priorityInput = selectedForm.priority.value;
     
             
-        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].editTaskName(nameInput);
-        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].editTaskDescription(descriptionInput);
-        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].editTaskDate(dateInput);
-        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].editTaskPriority(priorityInput);
+        ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].editTaskName(nameInput);
+        ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].editTaskDescription(descriptionInput);
+        ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].editTaskDate(dateInput);
+        ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[taskId].editTaskPriority(priorityInput);
             // remove add task modal
         greyout.remove();
         GeneralTask();
@@ -273,9 +277,7 @@ const editTaskFromProject = (e) => {
         // remove add task modal
         greyout.remove();
         GeneralTask();
-        }
-    
-    let docForm = document.querySelector('form');
+        };
     
     submitButton.addEventListener('click', editTask);
     
@@ -300,7 +302,6 @@ function removeAllChildNodes(parent) {
 // display project names on the project list board
 let listedProjects = document.querySelector('#listed-projects'); 
 removeAllChildNodes(listedProjects);
-console.log(ProjectListManager.getProjectList())
 
 
 
@@ -313,6 +314,25 @@ if(ProjectListManager.getProjectList().length > 1){
         projectRow.classList.add('project-row');
     }
 }
+
+// listen on the project window and switch projects
+let projectRows = document.querySelectorAll('.project-row');
+let generalTasksSection = document.querySelector('#general-tasks-section');
+
+const selectProject = (e) => {
+    
+    let project = e.target.textContent;
+    
+    ProjectListManager.setSelectedProject(project)
+
+    GeneralTask();
+
+};
+
+projectRows.forEach(function(projectRow){
+    projectRow.addEventListener('click', selectProject);
+});
+generalTasksSection.addEventListener('click', selectProject);
 
 }; 
 
