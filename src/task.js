@@ -52,7 +52,7 @@ const Task = (_name, _description, _date, _priority) => {
     };
 
     const setTaskComplete = (_boolean) => {
-        if(_boolean !== true || _boolean !== false){
+        if(_boolean !== true && _boolean !== false){
             return console.error("Input must be a boolean");
         }
         complete = _boolean;

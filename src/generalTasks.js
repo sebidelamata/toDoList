@@ -40,21 +40,37 @@ for(let i=0; i<taskArray.length; i++){
     taskName.id = `task-name-${i}`;
     taskName.classList.add('task-name'); 
     taskName.textContent = taskArray[i].getTaskName();
+    // shading if complete
+    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+        taskName.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
+    }
     let taskDescription = document.createElement('div');
     taskRow.appendChild(taskDescription);
     taskDescription.id = `task-description-${i}`;
     taskDescription.classList.add('task-description'); 
     taskDescription.textContent = taskArray[i].getTaskDescription();
+    // shading if complete
+    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+        taskDescription.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
+    }
     let taskDate = document.createElement('div');
     taskRow.appendChild(taskDate);
     taskDate.id = `task-date-${i}`;
     taskDate.classList.add('task-date'); 
     taskDate.textContent = taskArray[i].getTaskDate();
+    // shading if complete
+    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+        taskDate.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
+    }
     let taskPriority = document.createElement('div');
     taskRow.appendChild(taskPriority);
     taskPriority.id = `task-priority-${i}`;
     taskPriority.classList.add('task-priority'); 
     taskPriority.textContent = taskArray[i].getTaskPriority();
+    // shading if complete
+    if(ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === true){
+        taskPriority.style = 'text-decoration: line-through; color: rgba(255, 255, 255, 0.543);'
+    }
     let taskEdit = document.createElement('div');
     taskRow.appendChild(taskEdit);
     taskEdit.id = `task-edit-${i}`;
@@ -74,6 +90,28 @@ for(let i=0; i<taskArray.length; i++){
 }
 
 //console.log(_projectList)
+// listen on the project tasks window and complete tasks
+let completeTaskButtons = document.querySelectorAll('.task-complete');
+
+const completeTaskFromProject = (e) => {
+    
+    let taskId = e.target.id.substring(14);
+
+    if(ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskComplete() === true){
+        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].setTaskComplete(false);
+    } else {
+        ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].setTaskComplete(true);
+    }
+
+    console.log(ProjectListManager.getProjectList()[0].getProjectTasks()[taskId].getTaskComplete())
+
+    GeneralTask();
+
+};
+
+completeTaskButtons.forEach(function(completeTaskButton){
+    completeTaskButton.addEventListener('click', completeTaskFromProject);
+});
 
 // listen on the project tasks window and delete tasks
 let deleteTaskButtons = document.querySelectorAll('.task-delete');
