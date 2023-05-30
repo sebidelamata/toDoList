@@ -139,7 +139,9 @@ body{
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 10% max(5%) max(5%) min(40%);
+    vertical-align:top;
+    text-align: center;
 }
 
 #projects-container-title{
