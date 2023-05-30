@@ -352,7 +352,7 @@ label{
 
 .task-row{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     padding: 12px;
     border-radius: 48px;
@@ -400,7 +400,8 @@ label{
 .task-edit:hover{
     font-size: xx-large;
 }
-.task-delete{
+.task-delete,
+.task-complete{
     display: grid;
     justify-content: center;
     align-items: center;
@@ -408,7 +409,8 @@ label{
     font-weight: bolder;
     transition: 1s;
 }
-.task-delete:hover{
+.task-delete:hover,
+.task-complete:hover{
     font-size: xx-large;
 }
 

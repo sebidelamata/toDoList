@@ -19,7 +19,7 @@ projectsContainerTitle.textContent = ProjectListManager.getProjectList()[0].getP
 projectsContainer.appendChild(projectsContainerTitle);
 let projectDetails = document.createElement('div');
 projectDetails.id = 'project-details';
-projectDetails.textContent = ProjectListManager.getProjectList()[0].getProjectDate() !== null ? `${ProjectListManager.getProjectList()[0].getProjectDescription()}, a ${ProjectListManager.getProjectList()[0].getProjectPriority()} priority project due on ${ProjectListManager.getProjectList()[0].getProjectDate()}` : `${ProjectListManager.getProjectList()[0].getProjectDescription()} a ${ProjectListManager.getProjectList()[0].getProjectPriority()} priority project`;
+projectDetails.textContent = ProjectListManager.getProjectList()[0].getProjectDate() !== null ? `${ProjectListManager.getProjectList()[0].getProjectDescription()}` : `${ProjectListManager.getProjectList()[0].getProjectDescription()}`;
 projectsContainer.appendChild(projectDetails);
 let projectPriority = document.createElement('div');
 projectPriority.id = 'project-priority';
@@ -60,6 +60,11 @@ for(let i=0; i<taskArray.length; i++){
     taskEdit.id = `task-edit-${i}`;
     taskEdit.classList.add('task-edit');
     taskEdit.innerHTML = ' <i class="fas fa-edit"></i>';
+    let taskComplete = document.createElement('div');
+    taskRow.appendChild(taskComplete);
+    taskComplete.id = `task-complete-${i}`;
+    taskComplete.classList.add('task-complete');
+    taskComplete.innerHTML = ProjectListManager.getProjectList()[0].getProjectTasks()[i].getTaskComplete() === false ? '<i class="fa-regular fa-square"></i>' : '<i class="fa-regular fa-check-square"></i>';
     let taskDelete = document.createElement('div');
     taskRow.appendChild(taskDelete);
     taskDelete.id = `task-delete-${i}`;
