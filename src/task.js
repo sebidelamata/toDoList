@@ -40,7 +40,7 @@ const Task = (_name, _description, _date, _priority) => {
     };
 
     const editTaskPriority = (_newPriority) => {
-        if(_newPriority !== 'High' || _newPriority !== 'Medium' || _newPriority !== 'Low'){
+        if(_newPriority !== 'High' && _newPriority !== 'Medium' && _newPriority !== 'Low'){
             console.error('Priority must be High, Low, or Medium');
         }
 
