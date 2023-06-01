@@ -1,3 +1,4 @@
+import { LocalStorageManager } from './localStorageManager.js';
 import { ProjectListManager } from './projectList.js';
 
 const GeneralTask = () => {
@@ -332,6 +333,8 @@ const GeneralTask = () => {
         projectRow.addEventListener('click', selectProject);
     });
     generalTasksSection.addEventListener('click', selectProject);
+
+    LocalStorageManager().saveToLocalData();
 
 }; 
 

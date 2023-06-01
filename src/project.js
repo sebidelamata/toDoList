@@ -48,7 +48,7 @@ const Project = (_name, _description, _date, _priority) => {
         return complete;
     };
 
-    const setTaskComplete = (_boolean) => {
+    const setProjectComplete = (_boolean) => {
         if(_boolean !== true || _boolean !== false){
             return console.error("Input must be a boolean");
         }
@@ -82,7 +82,7 @@ const Project = (_name, _description, _date, _priority) => {
         getProjectPriority,
         editProjectPriority,
         getProjectComplete,
-        setTaskComplete,
+        setProjectComplete,
         getProjectTasks, 
         appendProjectTasks,
         deleteProjectTask,

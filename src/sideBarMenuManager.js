@@ -1,8 +1,11 @@
 import { ProjectListManager } from './projectList.js';
 import { GeneralTask } from './generalTasks.js';
+import { LocalStorageManager } from './localStorageManager.js';
 //import { AddTaskButtonManager } from './addTaskButtonManager.js';
 
-const SidebarMenuManager = () => {   
+const SidebarMenuManager = () => { 
+    
+    LocalStorageManager().loadFromLocalData();
 
     let bodyDiv = document.querySelector('#body'); 
 
