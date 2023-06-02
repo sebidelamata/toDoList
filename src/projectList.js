@@ -21,9 +21,21 @@ const ProjectListManager = (() => {
     }
 
     const appendProjectList = (_name, _description, _date, _priority) => {
-        let _project = Project(_name, _description, _date, _priority);
-        projectList.push(_project);
-        setSelectedProject(_project.getProjectName());
+
+        //make sure the project doesnt exist already
+        let checkExisting = 0
+
+        for(let i in ProjectListManager.getProjectList()){
+            if(ProjectListManager.getProjectList()[i].getProjectName() === _name){
+                checkExisting += 1;
+            }
+        }
+
+        if(checkExisting === 0){
+            let _project = Project(_name, _description, _date, _priority);
+            projectList.push(_project);
+            setSelectedProject(_project.getProjectName());
+        }
     };
 
     const removeProjectFromProjectList = (_projectName) => {

@@ -6,10 +6,43 @@ const LocalStorageManager = () => {
 
         if(localStorage.ProjectListSession){
             let importedLocalStorage = JSON.parse(localStorage.ProjectListSession);
-            console.log(importedLocalStorage)
             for(let i in importedLocalStorage){
-                console.log('hi')
+                // set our projects
+                ProjectListManager.appendProjectList(
+                    i,
+                    importedLocalStorage[i]['description'],
+                    importedLocalStorage[i]['date'],
+                    importedLocalStorage[i]['priority']
+                );
+                // now do tasks
+                for(let j in importedLocalStorage[i]['tasks']){
+                    let projectNameArray = Object.keys(importedLocalStorage)
+                    let selectedProjectIndex = projectNameArray.indexOf(i)
+                    ProjectListManager.getProjectList()[selectedProjectIndex].appendProjectTasks(
+                        j,
+                        importedLocalStorage[i]['tasks'][j]['description'],
+                        importedLocalStorage[i]['tasks'][j]['date'],
+                        importedLocalStorage[i]['tasks'][j]['priority'],
+                    );
+                }
             }
+
+            // set our complete status
+            for(let i in importedLocalStorage){
+                let projectNameArray = Object.keys(importedLocalStorage)
+                let selectedProjectIndex = projectNameArray.indexOf(i)
+                ProjectListManager.getProjectList()[selectedProjectIndex].setProjectComplete(
+                    importedLocalStorage[i]['complete']
+                );
+                // check tasks
+                for(let j in importedLocalStorage[i]['tasks']){
+                    let taskNameArray = Object.keys(importedLocalStorage[i]['tasks'])
+                    let selectedtaskIndex = taskNameArray.indexOf(j)
+                    ProjectListManager.getProjectList()[selectedProjectIndex].getProjectTasks()[selectedtaskIndex].setTaskComplete(
+                        importedLocalStorage[i]['tasks'][j]['complete']
+                    );
+                };
+            };
         }
 
     };

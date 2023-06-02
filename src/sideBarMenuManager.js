@@ -5,9 +5,9 @@ import { LocalStorageManager } from './localStorageManager.js';
 
 const SidebarMenuManager = () => { 
     
-    LocalStorageManager().loadFromLocalData();
+    let selectedProjectIndex = ProjectListManager.getSelectedProject();
 
-    let bodyDiv = document.querySelector('#body'); 
+    LocalStorageManager().loadFromLocalData();
 
     if(ProjectListManager.getProjectList()[0] === undefined || ProjectListManager.getProjectList()[selectedProjectIndex].getProjectName() !== 'General Tasks'){
         // create initial project (if it doesnt already exist)
@@ -22,9 +22,6 @@ const SidebarMenuManager = () => {
     GeneralTask();
 
     let addTasksButton = document.querySelector('#sidebar-icon-sub-sub-div'); 
-    let selectedProjectIndex = ProjectListManager.getSelectedProject();
-    let selectedProjectName = ProjectListManager.getProjectList()[selectedProjectIndex].getProjectName();
-    
     const addTasksPopup = () => {
 
         let selectedProjectIndex = ProjectListManager.getSelectedProject();

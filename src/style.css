@@ -140,9 +140,15 @@ body{
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% max(5%) max(5%) min(40%);
+    grid-template-rows: 10% max(5%) max(5%) min(60%) max(5%);
     vertical-align:top;
     text-align: center;
+}
+
+#projects-container-footer{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
 }
 
 #projects-container-title{
@@ -390,7 +396,8 @@ label{
     font-size: x-large;
     font-weight: bolder;
 }
-.task-edit{
+.task-edit,
+.project-edit{
     display: grid;
     justify-content: center;
     align-items: center;
@@ -398,11 +405,14 @@ label{
     font-weight: bolder;
     transition: 1s;
 }
-.task-edit:hover{
+.task-edit:hover,
+.project-edit:hover{
     font-size: xx-large;
 }
 .task-delete,
-.task-complete{
+.task-complete,
+.project-delete,
+.project-complete{
     display: grid;
     justify-content: center;
     align-items: center;
@@ -411,7 +421,9 @@ label{
     transition: 1s;
 }
 .task-delete:hover,
-.task-complete:hover{
+.task-complete:hover,
+.project-delete:hover,
+.project-complete:hover{
     font-size: xx-large;
 }
 

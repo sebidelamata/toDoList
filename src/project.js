@@ -37,7 +37,7 @@ const Project = (_name, _description, _date, _priority) => {
     };
 
     const editProjectPriority = (_newPriority) => {
-        if(_newPriority !== 'High' || _newPriority !== 'Medium' || _newPriority !== 'Low'){
+        if(_newPriority !== 'High' && _newPriority !== 'Medium' && _newPriority !== 'Low'){
             console.error('Priority must be High, Low, or Medium');
         }
 
@@ -49,7 +49,7 @@ const Project = (_name, _description, _date, _priority) => {
     };
 
     const setProjectComplete = (_boolean) => {
-        if(_boolean !== true || _boolean !== false){
+        if(_boolean !== true && _boolean !== false){
             return console.error("Input must be a boolean");
         }
         complete = _boolean;
