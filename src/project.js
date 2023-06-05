@@ -1,93 +1,94 @@
-import { Task } from './task.js';
+import { Task } from "./task.js";
 
 const Project = (_name, _description, _date, _priority) => {
+  let name = _name;
+  let description = _description;
+  let date = _date;
+  let priority = _priority;
+  let complete = false;
 
-    let name = _name;
-    let description = _description;
-    let date = _date;
-    let priority = _priority;
-    let complete = false;
+  const getProjectName = () => {
+    return name;
+  };
 
-    const getProjectName = () => {
-        return name;
-    };
+  const editProjectName = (_newName) => {
+    name = _newName;
+  };
 
-    const editProjectName = (_newName) => {
-        name = _newName;
-    };
+  const getProjectDescription = () => {
+    return description;
+  };
 
-    const getProjectDescription = () => {
-        return description;
-    };
+  const editProjectDescription = (_newDescriptionString) => {
+    description = _newDescriptionString;
+  };
 
-    const editProjectDescription = (_newDescriptionString) => {
-        description = _newDescriptionString;
-    };
+  const getProjectDate = () => {
+    return date;
+  };
 
-    const getProjectDate = () => {
-        return date;
-    };
+  const editProjectDate = (_newDate) => {
+    date = _newDate;
+  };
 
-    const editProjectDate = (_newDate) => {
-        date = _newDate;
-    };
+  const getProjectPriority = () => {
+    return priority;
+  };
 
-    const getProjectPriority = () => {
-        return priority;
-    };
-
-    const editProjectPriority = (_newPriority) => {
-        if(_newPriority !== 'High' && _newPriority !== 'Medium' && _newPriority !== 'Low'){
-            console.error('Priority must be High, Low, or Medium');
-        }
-
-        priority = _newPriority;
+  const editProjectPriority = (_newPriority) => {
+    if (
+      _newPriority !== "High" &&
+      _newPriority !== "Medium" &&
+      _newPriority !== "Low"
+    ) {
+      console.error("Priority must be High, Low, or Medium");
     }
 
-    const getProjectComplete = () => {
-        return complete;
-    };
+    priority = _newPriority;
+  };
 
-    const setProjectComplete = (_boolean) => {
-        if(_boolean !== true && _boolean !== false){
-            return console.error("Input must be a boolean");
-        }
-        complete = _boolean;
-    };
+  const getProjectComplete = () => {
+    return complete;
+  };
 
-    let projectTasks = [];
+  const setProjectComplete = (_boolean) => {
+    if (_boolean !== true && _boolean !== false) {
+      return console.error("Input must be a boolean");
+    }
+    complete = _boolean;
+  };
 
-    const getProjectTasks = () => {
-        return projectTasks;
-    };
+  let projectTasks = [];
 
-    const appendProjectTasks = (_name, _description, _date, _priority) => {
-        
-        let taskObject = Task(_name, _description, _date, _priority);
+  const getProjectTasks = () => {
+    return projectTasks;
+  };
 
-        projectTasks.push(taskObject);
-    };
+  const appendProjectTasks = (_name, _description, _date, _priority) => {
+    let taskObject = Task(_name, _description, _date, _priority);
 
-    const deleteProjectTask = (_index) => {
-        projectTasks.splice(_index, 1);
-    };
+    projectTasks.push(taskObject);
+  };
 
-    return {
-        getProjectName,
-        editProjectName,
-        getProjectDescription,
-        editProjectDescription,
-        getProjectDate,
-        editProjectDate,
-        getProjectPriority,
-        editProjectPriority,
-        getProjectComplete,
-        setProjectComplete,
-        getProjectTasks, 
-        appendProjectTasks,
-        deleteProjectTask,
-     };
+  const deleteProjectTask = (_index) => {
+    projectTasks.splice(_index, 1);
+  };
+
+  return {
+    getProjectName,
+    editProjectName,
+    getProjectDescription,
+    editProjectDescription,
+    getProjectDate,
+    editProjectDate,
+    getProjectPriority,
+    editProjectPriority,
+    getProjectComplete,
+    setProjectComplete,
+    getProjectTasks,
+    appendProjectTasks,
+    deleteProjectTask,
+  };
 };
 
 export { Project };
-
